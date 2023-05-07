@@ -39,6 +39,7 @@ resource "google_compute_instance" "jenkins_server" {
     yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
     systemctl start docker
     systemctl enable docker
+    usermod -aG docker jenkins
 
     # Install git
     yum install git -y
