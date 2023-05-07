@@ -34,14 +34,14 @@ resource "google_compute_instance" "jenkins_server" {
     systemctl enable jenkins
 
     # Installing docker
-    yum install -y yum-utils
-    yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-    yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    yum install -y yum-utils device-mapper-persistent-data lvm2 -y
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
     systemctl start docker
     systemctl enable docker
 
     # Install git
-    yum install -y git
+    yum install git -y
 
 
   EOF
